@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Prompt Generator</title>
+</head>
+<body>
+
+  <h1>AI Prompt Generator</h1>
+
+  <p>Enter your idea and get a ready prompt</p>
+
+  <input type="text" id="userInput" placeholder="Example: Instagram caption prompt" style="width:300px">
+
+  <br><br>
+
+  <button onclick="generatePrompt()">Generate Prompt</button>
+
+  <br><br>
+
+  <textarea id="output" rows="8" cols="60"></textarea>
+
+  <script>
+    function generatePrompt() {
+      let input = document.getElementById("userInput").value;
+
+      let prompt =
+      "You are an expert AI prompt engineer. Create a high-quality, detailed prompt for:\n\n" +
+      input +
+      "\n\nInclude tone, goal, format, and constraints.";
+
+      document.getElementById("output").value = prompt;
+    }
+  </script>
+
+</body>
+</html>
