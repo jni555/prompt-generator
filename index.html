@@ -2,14 +2,19 @@
 <html>
 <head>
   <title>AI Prompt Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body style="font-family: Arial; text-align:center; padding:40px;">
 
   <h1>AI Prompt Generator</h1>
+  <p>Create powerful prompts and use them in ChatGPT or Gemini</p>
 
-  <p>Enter your idea and get a ready prompt</p>
-
-  <input type="text" id="userInput" placeholder="Example: Instagram caption prompt" style="width:300px">
+  <input 
+    type="text" 
+    id="userInput" 
+    placeholder="Example: Create an image of a luxury car"
+    style="width:90%; max-width:500px; padding:10px;"
+  >
 
   <br><br>
 
@@ -17,18 +22,49 @@
 
   <br><br>
 
-  <textarea id="output" rows="8" cols="60"></textarea>
+  <textarea 
+    id="output" 
+    rows="8" 
+    style="width:90%; max-width:500px;"
+  ></textarea>
+
+  <br><br>
+
+  <button onclick="copyPrompt()">Copy Prompt</button>
+  <button onclick="openChatGPT()">Use in ChatGPT</button>
+  <button onclick="openGemini()">Use in Gemini</button>
 
   <script>
     function generatePrompt() {
       let input = document.getElementById("userInput").value;
 
       let prompt =
-      "You are an expert AI prompt engineer. Create a high-quality, detailed prompt for:\n\n" +
-      input +
-      "\n\nInclude tone, goal, format, and constraints.";
+`You are an expert AI assistant.
+Task: ${input}
+
+Instructions:
+- Be detailed and creative
+- Define style, tone, and output format
+- Ask clarifying questions if needed`;
 
       document.getElementById("output").value = prompt;
+    }
+
+    function copyPrompt() {
+      let text = document.getElementById("output");
+      text.select();
+      document.execCommand("copy");
+      alert("Prompt copied!");
+    }
+
+    function openChatGPT() {
+      copyPrompt();
+      window.open("https://chat.openai.com", "_blank");
+    }
+
+    function openGemini() {
+      copyPrompt();
+      window.open("https://gemini.google.com", "_blank");
     }
   </script>
 
